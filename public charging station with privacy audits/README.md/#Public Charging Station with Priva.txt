@@ -1,0 +1,69 @@
+#Public Charging Station with Privacy Audits
+
+## Project Overview
+-Public charging stations are widely used but can expose users to data theft risks such as juice jacking. 
+-This project presents a hardware-based secure charging system that prevents unauthorized data transfer while allowing safe power delivery. 
+-The system also performs privacy audits by logging charging events with timestamps for accountability and monitoring.
+
+## Problem Statement
+-Public USB charging ports may allow malicious data access through USB data lines (D+ and D−). 
+-Existing charge-only cables permanently block data but lack intelligence and monitoring. Smartphone OS-based restrictions rely on manual user selection and do not provide automated security verification or audit logging.
+
+## Objectives
+- Prevent unauthorized USB data transfer during public charging
+- Allow uninterrupted safe charging
+- Detect suspicious data activity
+- Provide real-time alerts
+- Maintain timestamped privacy audit logs
+
+## System Features
+- DIY USB data blocker using USB male pinout
+- Voltage monitoring for charging analysis
+- OLED display for real-time status
+- Audible buzzer alerts
+- RTC-based timestamp logging
+- Hardware-level data isolation
+
+## Components Used
+- Arduino Nano (Main Controller)
+- OLED Display (0.96" I2C)
+- RTC Module (DS1307)
+- Voltage Sensor Module
+- Buzzer
+- USB Male Pinout (Data Blocker)
+- Breadboard and Jumper Wires
+
+## Working Principle
+-The system monitors the USB voltage input through a voltage sensor. 
+-When a device is connected, the Arduino Nano evaluates charging behavior. 
+-If abnormal or suspicious activity is detected on the data lines, the system alerts the user using a buzzer and displays the status on the OLED screen. 
+-The RTC module logs the event with a timestamp for privacy auditing. 
+-Charging continues while data lines remain blocked.
+
+## Testing Procedure
+###Baseline Test (Without Blocker):
+- Device is detected using ADB
+- File transfer succeeds
+
+###Protected Test (With Data Blocker):
+- Device not detected via ADB
+- Data transfer fails
+- Charging continues safely
+- Event logged with timestamp
+
+##Advantages Over Existing Solutions
+- Provides real-time monitoring instead of static blocking
+- Adds privacy auditing with timestamps
+- Works independently of smartphone OS settings
+- Enhances transparency and accountability in public charging environments
+
+##Future Enhancements
+- ESP32 integration with Wi-Fi for cloud logging
+- IoT dashboard for remote monitoring
+- Intelligent pattern-based USB activity detection
+- Mobile application for audit report access
+
+##Conclusion
+-The Public Charging Station with Privacy Audits system enhances USB charging security by combining hardware-level data isolation with monitoring and event logging. 
+-It offers improved protection compared to traditional charge-only cables and manual USB restriction methods, making it suitable for deployment in public environments.
+
